@@ -1,10 +1,10 @@
 {
     "$schema": "http://json-schema.org/schema#",
     "$schemaVersion": "0.0.5",
-    "modelTags": "NAIADES, DigitalWater.city, B-WaterSmart",
-    "$id": "https://smart-data-models.github.io/dataModel.WaterQuality/WaterQualityObserved/schema.json",
-    "title": " - Water quality observed schema",
-    "description": "Water Quality data model is intended to represent water quality parameters at a certain water mass (river,  lake, sea, etc.) section",
+    "modelTags": "NAIADES, DigitalWater.city, B-WaterSmart, CAT",
+    "$id": "https://github.com/jordimartinezcat/dataModel.WaterQuality-WaterQualityObservedCAT/blob/main/schema.json",
+    "title": " - Water quality observed CAT schema",
+    "description": "Water Quality data model is intended to represent water quality parameters at some measurement point at the water network distribution",
     "type": "object",
     "allOf": [
         {
@@ -18,13 +18,13 @@
                 "type": {
                     "type": "string",
                     "enum": [
-                        "WaterQualityObserved"
+                        "WaterQualityObservedCAT"
                     ],
-                    "description": "Property. NGSI Entity type. It has to be WaterQualityObserved"
+                    "description": "Property. NGSI Entity type. It has to be WaterQualityObservedCAT"
                 },
                 "dateObserved": {
                     "type": "string",
-                    "description": "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTCformat. It can be represented by an specific time instant or by an ISO8601 interval"
+                    "description": "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTCformat (yyyy-MM-dd hh:mm:ss.sss). It can be represented by an specific time instant or by an ISO8601 interval"
                 },
                 "measurand": {
                     "type": "array",
@@ -49,8 +49,9 @@
                     "description": "Property. Chemical oxygen demand (COD) is an indicative measure of the amount of oxygen that can be consumed by reactions in a measured solution. Units:'mg/l'"
                 },
                 "conductivity": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "μS/cm a 20 ºC",
                     "description": "Property. Electrical Conductivity"
                 },
                 "conductance": {
@@ -71,6 +72,8 @@
                 "turbidity": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "UNF",
                     "description": "Property. Amount of light scattered by particles in the water column"
                 },
                 "salinity": {
@@ -82,11 +85,14 @@
                     "type": "number",
                     "minimum": 0,
                     "maximum": 14,
+					"multipleOf": 0.1,
+					"units": "Unidades pH",
                     "description": "Property. Acidity or basicity of an aqueous solution"
                 },
                 "orp": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "mV",
                     "description": "Property. Oxidation-Reduction potential"
                 },
                 "O2": {
@@ -112,6 +118,8 @@
                 "NH4": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "mg/L",
                     "description": "Property. Concentration of ammonium"
                 },
                 "NH3": {
@@ -124,9 +132,17 @@
                     "minimum": 0,
                     "description": "Property. Concentration of chlorides"
                 },
-                "NO3": {
+				"Vinyl chloride": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "μg/L",					
+                    "description": "Property. Concentration of vinyl chloride"
+                },
+                "NO3": {
+                    "type": "integer",
+                    "minimum": 0,
+					"units": "mg/L",
                     "description": "Property. Concentration of nitrates"
                 },
                 "PO4": {
@@ -135,13 +151,15 @@
                     "description": "Property. Concentration of phosphates"
                 },
                 "escherichiaColi": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "UFC o NMP en 100 m",
                     "description": "Property. Concentration of Escherichia coli. Units:'Total number of bacteria/100mL'"
                 },
                 "enterococci": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "UFC o NMP en 100 m",
                     "description": "Property. Concentration of Enterococci. Units:'Total number of bacteria/100mL'"
                 },
                 "refPointOfInterest": {
@@ -163,7 +181,9 @@
                 },
                 "flow": {
                     "type": "number",
-                    "description": "Property. Units:'cubic meters/hour'. Water Flow observed. "
+					"multipleOf": 0.1,
+					"units": "l/s",	
+                    "description": "Property. Units:'litres/second'. Water Flow observed. "
                 },
                 "alkalinity": {
                     "type": "number",
@@ -178,6 +198,8 @@
                 "NO2": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "mg/L",	
                     "description": "Property. Nitrite nitrogen. Concentration of a sample in nitrite nitrogen. Units:'mg/l'"
                 },
                 "N-TOT": {
@@ -196,18 +218,22 @@
                     "description": "Property. Phosphate-phosphorus. Concentration of phosphorus as phosphate. Units:'mg/l'"
                 },
                 "Al": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "μg/L",
                     "description": "Property. Aluminium. Concentration of aluminium. Units:'mg/l'"
                 },
                 "As": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "μg/L",
                     "description": "Property. Arsenic. Concentration of arsenic. Units:'mg/l'"
                 },
                 "B": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "mg/L",					
                     "description": "Property. Boron. Concentration of boron. Units:'mg/l'"
                 },
                 "Ba": {
@@ -218,52 +244,72 @@
                 "Cd": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "Property. Cadmium. Concentration of cadmium. Units:'mg/l'"
+					"multipleOf": 0.1,
+					"units": "μg/L",					
+                    "description": "Property. Cadmium. Concentration of cadmium. Units:'μg/l'"
                 },
                 "Cr": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
-                    "description": "Property. Chromium. Concentration of chromium. Units:'mg/l'"
+					"units": "μg/L"
+                    "description": "Property. Chromium. Concentration of total chromium oxidation state +3 and oxidation state +6. Units:'μg/L'"
                 },
                 "Cr-III": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
-                    "description": "Property. Chromium III. Concentration of chromium at the oxidation state +3. Units:'mg/l'"
+					"units": "μg/L",
+                    "description": "Property. Chromium III. Concentration of chromium at the oxidation state +3. Units:'μg/l'"
                 },
                 "Cr-VI": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
-                    "description": "Property. Chromium VI. Concentration of chromium at the oxidation state +6. Units:'mg/l'"
+					"units": "μg/L",
+                    "description": "Property. Chromium VI. Concentration of chromium at the oxidation state +6. Units:'μg/l'"
                 },
                 "Cu": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "mg/L",					
                     "description": "Property. Copper. Concentration of copper. Units:'mg/l'"
                 },
                 "Fe": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
-                    "description": "Property. Iron. Concentration of iron. Units:'mg/l'"
+					"units": "μg/L",
+                    "description": "Property. Iron. Concentration of iron. Units:'μg/l'"
                 },
                 "fluoride": {
                     "type": "number",
                     "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "mg/L",					
                     "description": "Property. Concentration of fluoride. Units:'mg/l'"
                 },
                 "Hg": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "Property. Mercury. Concentration of mercury. Units:'mg/l'"
+					"multipleOf": 0.1,
+					"units": "μg/L",					
+                    "description": "Property. Mercury. Concentration of mercury. Units:'μg/l'"
                 },
                 "THC": {
                     "type": "number",
                     "minimum": 0,
                     "description": "Property. Total hydrocarbon. Concentration of total hydrocarbon. Units:'mg/l'"
                 },
-                "Ni": {
+				"THPA": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "Property. Nickel. Concentration of Nickel. Units:'mg/l'"
+					"multipleOf": 0.01,
+					"units": "μg/L",
+                    "description": "Property. Total hydrocarbon. Concentration of polycyclic aromatic hydrocarbons. Units:'μg/l'"
+                },
+                "Ni": {
+                    "type": "integer",
+                    "minimum": 0,
+					"units": "μg/L",
+                    "description": "Property. Nickel. Concentration of Nickel. Units:'μg/l'"
                 },
                 "TO": {
                     "type": "number",
@@ -273,12 +319,15 @@
                 "Pb": {
                     "type": "number",
                     "minimum": 0,
-                    "description": "Property. Lead. Concentration of lead. Units:'mg/l'"
+					"multipleOf": 0.1,
+					"units": "μg/L",
+                    "description": "Property. Lead. Concentration of lead. Units:'μg/l'"
                 },
                 "Se": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
-                    "description": "Property. Selenium. Concentration of selenium. Units:'mg/l'"
+					"units": "μg/L",
+                    "description": "Property. Selenium. Concentration of selenium. Units:'μg/l'"
                 },
                 "Sn": {
                     "type": "number",
@@ -286,8 +335,9 @@
                     "description": "Property. Tin. Concentration of tin. Units:'mg/l'"
                 },
                 "sulphate": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
+					"units": "mg/L",
                     "description": "Property. Concentration of sulfate. Units:'mg/l'"
                 },
                 "sulphite": {
@@ -319,7 +369,78 @@
                     "type": "number",
                     "minimum": 0,
                     "description": "Property. Zinc. Concentration of zinc. Units:'mg/l'"
-                }
+                },
+				"ColorTrue": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "Hazen",
+                    "description": "Property. Color True. Units:'Hazen'"
+                },
+				"ColorApp": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "Hazen",
+                    "description": "Property. Color App. Units:'Hazen'"
+                },
+                "turbidityEPA": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "NTU",
+                    "description": "Property. Turbidity by EPA specification"
+                },				
+                "turbidityISO": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "FTU",
+                    "description": "Property. Turbidity by ISO specification iSCAN sensor"
+                },
+                "turbiditySigrist": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.1,
+					"units": "FTU",
+                    "description": "Property. Turbidity by ISO specification by Sigrist sensor"
+                },				
+                "TOC": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "mg/L",
+                    "description": "Property. TOC. Concentration of Total Organic Carbon. Units mg/L"
+                },				
+                "DOC": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "mg/L",
+                    "description": "Property. DOC. Concentration of Dissolved Organic Carbon. Units mg/L"
+                },
+				"UV254": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "Abs/m",
+                    "description": "Property. UV254. organic matter present in water. Units Abs/m"
+                },
+				"Cl": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "mg/L",
+                    "description": "Property. Free Chlorine. Chlorine concentratrion in water. Units mg/L"
+                },	
+				"TLF": {
+                    "type": "number",
+                    "minimum": 0,
+					"multipleOf": 0.01,
+					"units": "Ug/L",
+                    "description": "Property. TLF. . Units Ug/L"
+                },
+				
             }
         }
     ],

@@ -1,0 +1,1 @@
+datamodel-codegen --output-model-type pydantic_v2.BaseModel --input-file-type jsonschema --input "C:\Users\jmartinez\OneDrive - ccaait.cat\Working Projects\Python\Standard_Data\WaterQualityObserverCAT\schema.json" --output "C:\Users\jmartinez\OneDrive - ccaait.cat\Working Projects\Python\Standard_Data\WaterQualityObserverCAT\model_v2.py"

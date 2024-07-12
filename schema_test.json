@@ -1,0 +1,13 @@
+{
+    "Dada":{
+        "dateObserved": {
+            "type": "string",
+            "description": "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTCformat (yyyy-MM-dd hh:mm:ss.sss). It can be represented by an specific time instant or by an ISO8601 interval"
+        },
+        "temperature": {
+            "type": "number",
+            "description": "Property. Temperature"
+        }
+        
+    }
+}
